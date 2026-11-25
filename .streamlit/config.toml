@@ -1,0 +1,10 @@
+[theme]
+base = "light"
+primaryColor = "#0072B2"
+
+[browser]
+gatherUsageStats = false
+
+[server]
+runOnSave = false
+fileWatcherType = "none"

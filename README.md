@@ -40,9 +40,7 @@ Las pruebas comprueban que los modelos reproducen las métricas de prueba de la 
 
 ## Despliegue en vivo (Streamlit Community Cloud)
 
-1. Sube esta carpeta a un repositorio público de GitHub.
-2. En https://share.streamlit.io elige el repositorio, la rama y el archivo principal `dashboard/app.py`.
-3. La plataforma instala `requirements.txt` y publica una URL pública.
+https://dashboardcienciadatos-ejyrwcfqtgnxc5oxfvfsnu.streamlit.app
 
 ## Notas
 
@@ -52,4 +50,4 @@ Datos: Cortez, P. y Silva, A. (2008), Student Performance, UCI Machine Learning 
 
 ## Si aparece un error al cargar los modelos
 
-Un error como `XGBoostError: input stream corrupted` indica casi siempre una versión distinta de xgboost o un archivo alterado al copiarlo. Ejecuta `python scripts/verificar_entorno.py`: muestra qué versiones difieren y si los modelos cargan. Los modelos XGBoost se guardan además en JSON (modelos/*.json), que es portable entre versiones; si clonas con git en Windows, el archivo `.gitattributes` evita que se alteren los binarios.
+Un error como `XGBoostError: input stream corrupted` indica casi siempre una versión distinta de xgboost o un archivo alterado al copiarlo. Ejecutar `python scripts/verificar_entorno.py`: muestra qué versiones difieren y si los modelos cargan. Los modelos XGBoost se guardan además en JSON (modelos/*.json), que es portable entre versiones; si se clona con git en Windows, el archivo `.gitattributes` evita que se alteren los binarios.

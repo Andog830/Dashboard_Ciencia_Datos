@@ -27,6 +27,7 @@ Instalación manual:
     dashboard/app.py       aplicación de Streamlit
     notebooks/             cuadernos de las cuatro fases (el de la Fase 4 es el informe técnico)
     tests/                 pruebas automáticas (pytest)
+    scripts/               exportar_xgboost.py y verificar_entorno.py
     requirements.txt       dependencias del dashboard con versiones exactas
     requirements-notebooks.txt   dependencias para reproducir los cuadernos (PyTorch, SHAP, etc.)
 
@@ -48,3 +49,7 @@ Las pruebas comprueban que los modelos reproducen las métricas de prueba de la 
 Los modelos se guardaron con scikit-learn 1.9.1 y XGBoost 3.4.1; usa esas versiones (están fijadas en requirements.txt) porque los archivos joblib no son portables entre versiones distintas. El conjunto de datos no tiene variable de fecha, por lo que los filtros del dashboard son por rangos numéricos y categorías.
 
 Datos: Cortez, P. y Silva, A. (2008), Student Performance, UCI Machine Learning Repository, CC BY 4.0, https://doi.org/10.24432/C5TG7T
+
+## Si aparece un error al cargar los modelos
+
+Un error como `XGBoostError: input stream corrupted` indica casi siempre una versión distinta de xgboost o un archivo alterado al copiarlo. Ejecuta `python scripts/verificar_entorno.py`: muestra qué versiones difieren y si los modelos cargan. Los modelos XGBoost se guardan además en JSON (modelos/*.json), que es portable entre versiones; si clonas con git en Windows, el archivo `.gitattributes` evita que se alteren los binarios.

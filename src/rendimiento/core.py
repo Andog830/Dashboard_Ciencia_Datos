@@ -86,7 +86,12 @@ def derivar(entrada: dict) -> pd.DataFrame:
 
 @lru_cache(maxsize=None)
 def modelo(tarea: str, escenario: str):
-    return joblib.load(MODELOS / f"{tarea}_{escenario.replace(' ', '_')}.joblib")
+    """Carga el pipeline; si el modelo es XGBoost, su booster se lee del JSON portable que lo acompaña."""
+    base = MODELOS / f"{tarea}_{escenario.replace(' ', '_')}"
+    pipe = joblib.load(base.with_suffix(".joblib"))
+    if base.with_suffix(".json").exists():
+        pipe.named_steps["m"].load_model(base.with_suffix(".json"))
+    return pipe
 
 
 def nivel_riesgo(p: float, umbral: float) -> str:

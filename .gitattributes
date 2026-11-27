@@ -1,0 +1,6 @@
+# Evita que git (por ejemplo en Windows con autocrlf) altere los archivos binarios de los modelos
+*.joblib binary
+*.ubj binary
+*.csv text eol=lf
+*.json text eol=lf
+*.sh text eol=lf
